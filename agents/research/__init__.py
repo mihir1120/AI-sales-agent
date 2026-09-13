@@ -6,10 +6,18 @@ from openai import OpenAI
 
 from core.config.settings import get_settings
 from core.schemas.research import ResearchResult
+from agents.research.providers import run_mock_research
 
 
 def run_research(company_name: str, website: str | None = None) -> ResearchResult:
     settings = get_settings()
+
+    if settings.research_provider == "mock":
+        return run_mock_research(company_name, website)
+
+    if settings.research_provider != "openai":
+        raise ValueError(f"Unsupported RESEARCH_PROVIDER: {settings.research_provider}")
+
     if not settings.openai_api_key:
         raise ValueError("OPENAI_API_KEY is not configured")
 
