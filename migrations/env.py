@@ -4,6 +4,7 @@ from alembic import context
 
 from core.config.settings import get_settings
 from core.database.base import Base
+import core.models  # noqa: F401 - register models with Base.metadata
 
 config = context.config
 
