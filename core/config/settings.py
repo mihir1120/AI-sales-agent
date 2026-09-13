@@ -7,6 +7,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     app_name: str = "Sales AI Agent API"
     openai_api_key: str | None = Field(default=None, alias="OPENAI_API_KEY")
+    research_provider: str = Field(default="mock", alias="RESEARCH_PROVIDER")
+    research_model: str = Field(default="gpt-5.6-luna", alias="RESEARCH_MODEL")
     database_url: str = Field(
         default="postgresql+psycopg://sales_agent:sales_agent@localhost:5432/sales_agent",
         alias="DATABASE_URL",

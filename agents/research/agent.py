@@ -1,4 +1,9 @@
-from agents.orchestrator.state import SalesAgentState
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from agents.orchestrator.state import SalesAgentState
 
 
 def run_research_agent(state: SalesAgentState) -> SalesAgentState:
